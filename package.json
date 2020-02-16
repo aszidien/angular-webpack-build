@@ -1,0 +1,77 @@
+{
+  "name": "angular-webpack-build",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build:dev": "cross-env NODE_ENV=development webpack --mode development",
+    "build:prod": "cross-env NODE_ENV=production webpack --mode production",
+    "build:clean": "del-cli 'src/**/*.js' 'src/**/*.js.map' 'src/**/*.ngsummary.json' 'src/**/*.metadata.json' 'src/**/**/*.ngfactory.ts' 'src/**/*.ngstyle.ts' 'src/**/*.shim.ts'",
+    "start": "webpack-dev-server --inline --hot --progress --port 8080",
+    "serve": "lite-server",
+    "test": "jest",
+    "test:coverage": "jest --coverage"
+  },
+  "jest": {
+    "preset": "jest-preset-angular",
+    "setupFilesAfterEnv": [
+      "./config/jest.setup.ts"
+    ],
+    "testPathIgnorePatterns": [
+      "./node_modules/",
+      "./dist/",
+      "./src/test.ts"
+    ],
+    "globals": {
+      "ts-jest": {
+        "tsConfig": "./tsconfig.spec.json",
+        "stringifyContentPathRegex": "\\.html$",
+        "astTransformers": [
+          "./node_modules/jest-preset-angular/InlineHtmlStripStylesTransformer"
+        ]
+      }
+    }
+  },
+  "dependencies": {
+    "@angular/animations": "^9.0.1",
+    "@angular/common": "^9.0.1",
+    "@angular/compiler": "^9.0.1",
+    "@angular/compiler-cli": "^9.0.1",
+    "@angular/core": "^9.0.1",
+    "@angular/platform-browser": "^9.0.1",
+    "@angular/platform-browser-dynamic": "^9.0.1",
+    "core-js": "^3.6.4",
+    "zone.js": "^0.10.2"
+  },
+  "devDependencies": {
+    "@ngtools/webpack": "^9.0.2",
+    "@types/core-js": "^2.5.3",
+    "@types/jest": "^25.1.2",
+    "@types/node": "^13.7.1",
+    "@typescript-eslint/eslint-plugin": "^2.19.2",
+    "@typescript-eslint/parser": "^2.19.2",
+    "angular-router-loader": "^0.8.5",
+    "angular2-template-loader": "^0.6.2",
+    "awesome-typescript-loader": "^5.2.1",
+    "clean-webpack-plugin": "^3.0.0",
+    "cross-env": "^7.0.0",
+    "css-loader": "^3.4.2",
+    "del-cli": "^3.0.0",
+    "eslint": "^6.8.0",
+    "eslint-loader": "^3.0.3",
+    "html-loader": "^0.5.5",
+    "html-webpack-plugin": "^3.2.0",
+    "jest": "^25.1.0",
+    "jest-preset-angular": "^8.0.0",
+    "lite-server": "^2.5.4",
+    "node-sass": "^4.13.1",
+    "sass-loader": "^8.0.2",
+    "to-string-loader": "^1.1.6",
+    "typescript": "^3.7.5",
+    "uglifyjs-webpack-plugin": "^2.2.0",
+    "webpack": "^4.41.6",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.10.3",
+    "webpack-merge": "^4.2.2"
+  }
+}
